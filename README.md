@@ -1,3 +1,3 @@
 # uwu
 
-> Drop-in uwuinator for cat
+> uwunator extension for cat
