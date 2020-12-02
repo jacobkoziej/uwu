@@ -16,6 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -31,6 +32,11 @@ int main(int argc, char **argv)
 		cat_bufsiz += strlen(argv[i]) + 1;
 
 	char *cat_cmd = calloc(sizeof(char), cat_bufsiz);
+
+	if (cat_cmd == NULL) {
+		fprintf(stderr, "Memory allocation for cat command failed.\n");
+		exit(EXIT_FAILURE);
+	}
 
 	strncpy(cat_cmd, CAT_PATH, sizeof(char) * cat_bufsiz - 1);
 
