@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
 		cat_bufsiz += strlen(argv[i]) + 1;
 
-	char *cat_cmd = calloc(sizeof(char), cat_bufsiz);
+	char *cat_cmd = malloc(sizeof(char) * cat_bufsiz);
 
 	if (cat_cmd == NULL) {
 		fprintf(stderr, "Memory allocation for cat command failed.\n");
