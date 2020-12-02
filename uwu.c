@@ -15,3 +15,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
+#include <stdlib.h>
+#include <string.h>
+
+#define CAT_PATH "cat"
+
+
+int main(int argc, char **argv)
+{
+	// obtain cat command
+	int cat_bufsiz = strlen(CAT_PATH) + 1;
+
+	for (int i = 1; i < argc; i++)
+		cat_bufsiz += strlen(argv[i]) + 1;
+
+	char *cat_cmd = calloc(sizeof(char), cat_bufsiz);
+
+	strncpy(cat_cmd, CAT_PATH, sizeof(char) * cat_bufsiz - 1);
+
+	for (int i = 1; i < argc; i++) {
+		strcat(cat_cmd, " ");
+		strcat(cat_cmd, argv[i]);
+	}
+
+
+	exit(EXIT_SUCCESS);
+}
