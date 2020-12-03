@@ -17,7 +17,9 @@
  */
 
 #ifndef UWU_H
-
 #define UWU_H
+
+#define CAT_PATH "cat"
+
 
 #endif  // UWU_H

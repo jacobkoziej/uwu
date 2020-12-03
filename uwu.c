@@ -22,8 +22,6 @@
 
 #include "uwu.h"
 
-#define CAT_PATH "cat"
-
 
 int main(int argc, char **argv)
 {
