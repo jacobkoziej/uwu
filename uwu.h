@@ -21,5 +21,14 @@
 
 #define CAT_PATH "cat"
 
+#define NUM_CAT_PIPES 3
+
+#define CAT_STDIN_FD  0
+#define CAT_STDOUT_FD 1
+#define CAT_STDERR_FD 2
+
+#define PIPE_R 0
+#define PIPE_W 0
+
 
 #endif  // UWU_H
