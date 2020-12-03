@@ -28,24 +28,26 @@
 int main(int argc, char **argv)
 {
 	// obtain cat command
-	int cat_bufsiz = strlen(CAT_PATH) + 1;
-
-	for (int i = 1; i < argc; i++)
-		cat_bufsiz += strlen(argv[i]) + 1;
-
-	char *cat_cmd = malloc(sizeof(char) * cat_bufsiz);
-
+	char **cat_cmd = malloc(sizeof(char*) * argc);
 	if (cat_cmd == NULL) {
-		fprintf(stderr, "Memory allocation for cat command failed.\n");
+		fprintf(stderr, "Error: Memory allocation for cat command failed\n");
 		exit(EXIT_FAILURE);
 	}
 
-	strncpy(cat_cmd, CAT_PATH, sizeof(char) * cat_bufsiz - 1);
+	cat_cmd[0] = malloc(sizeof(char) * strlen(CAT_PATH) + 1);
+	for (int i = 1; i < argc; i++)
+		cat_cmd[i] = malloc(sizeof(char) * strlen(argv[i]) + 1);
 
-	for (int i = 1; i < argc; i++) {
-		strcat(cat_cmd, " ");
-		strcat(cat_cmd, argv[i]);
+	for (int i = 0; i < argc; i++) {
+		if (cat_cmd[i] == NULL) {
+			fprintf(stderr, "Error: Memory allocation for cat arguments failed\n");
+			exit(EXIT_FAILURE);
+		}
 	}
+
+	strcpy(cat_cmd[0], CAT_PATH);
+	for (int i = 1; i < argc; i++)
+		strcpy(cat_cmd[i], argv[i]);
 
 
 	// open pipes to cat
@@ -58,6 +60,9 @@ int main(int argc, char **argv)
 		}
 
 
+	// cleanup
+	for (int i = 0; i < argc; i++)
+		free(cat_cmd[i]);
 	free(cat_cmd);
 
 
