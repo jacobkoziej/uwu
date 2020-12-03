@@ -28,7 +28,7 @@
 #define CAT_STDERR_FD 2
 
 #define PIPE_R 0
-#define PIPE_W 0
+#define PIPE_W 1
 
 
 #endif  // UWU_H
