@@ -16,9 +16,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "uwu.h"
 
@@ -44,6 +46,17 @@ int main(int argc, char **argv)
 		strcat(cat_cmd, " ");
 		strcat(cat_cmd, argv[i]);
 	}
+
+
+	// open pipes to cat
+	int cat[NUM_CAT_PIPES][2];
+
+	for (int i = 0; i < NUM_CAT_PIPES; i++)
+		if (pipe(cat[i]) == -1) {
+			fprintf(stderr, "Error: %s\n", strerror(errno));
+			exit(EXIT_FAILURE);
+		}
+
 
 	free(cat_cmd);
 
