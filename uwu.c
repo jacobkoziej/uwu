@@ -45,6 +45,8 @@ int main(int argc, char **argv)
 		strcat(cat_cmd, argv[i]);
 	}
 
+	free(cat_cmd);
+
 
 	exit(EXIT_SUCCESS);
 }
