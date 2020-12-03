@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "uwu.h"
+
 #define CAT_PATH "cat"
 
 
