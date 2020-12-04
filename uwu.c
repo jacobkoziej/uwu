@@ -82,6 +82,9 @@ int main(int argc, char **argv)
 
 			execvp(cat_cmd[0], cat_cmd);
 
+			fprintf(stderr, "Error: %s\n", strerror(errno));
+			exit(EXIT_FAILURE);
+
 		// parent
 		default:
 			// close unused ends of pipes
