@@ -76,8 +76,8 @@ int main(int argc, char **argv)
 
 			// close unused ends of pipes
 			for (int i = 0; i < NUM_CAT_PIPES; i++) {
-				close(cat[i][0]);
-				close(cat[i][1]);
+				close(cat[i][PIPE_R]);
+				close(cat[i][PIPE_W]);
 			}
 
 			execvp(cat_cmd[0], cat_cmd);
