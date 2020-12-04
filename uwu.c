@@ -61,7 +61,9 @@ int main(int argc, char **argv)
 
 
 	/* create pipes between cat & uwu */
-	switch (fork()) {
+	int cat_pid = fork();
+
+	switch (cat_pid) {
 		// error
 		case -1:
 			fprintf(stderr, "Error: %s\n", strerror(errno));
