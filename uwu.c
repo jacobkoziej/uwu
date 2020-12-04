@@ -60,6 +60,38 @@ int main(int argc, char **argv)
 		}
 
 
+	/* create pipes between cat & uwu */
+	switch (fork()) {
+		// error
+		case -1:
+			fprintf(stderr, "Error: %s\n", strerror(errno));
+			exit(EXIT_FAILURE);
+
+		// child
+		case 0:
+			// close unused ends of pipes
+			close(cat[CAT_STDIN_FD][PIPE_W]);
+			close(cat[CAT_STDOUT_FD][PIPE_R]);
+			close(cat[CAT_STDERR_FD][PIPE_R]);
+
+			// redirect stdin/stdout/sdterr to cat pipes
+			dup2(cat[CAT_STDIN_FD][PIPE_R], STDIN_FILENO);
+			dup2(cat[CAT_STDOUT_FD][PIPE_W], STDOUT_FILENO);
+			dup2(cat[CAT_STDERR_FD][PIPE_W], STDERR_FILENO);
+
+			execvp(cat_cmd[0], cat_cmd);
+
+		// parent
+		default:
+			// close unused ends of pipes
+			close(cat[CAT_STDIN_FD][PIPE_R]);
+			close(cat[CAT_STDOUT_FD][PIPE_W]);
+			close(cat[CAT_STDERR_FD][PIPE_W]);
+
+			break;
+	}
+
+
 	/* cleanup */
 	for (int i = 0; i < argc; i++)
 		free(cat_cmd[i]);
