@@ -28,7 +28,7 @@
 int main(int argc, char **argv)
 {
 	/* obtain cat command */
-	char **cat_cmd = malloc(sizeof(char*) * argc);
+	char **cat_cmd = malloc(sizeof(char*) * argc + 1);
 	if (cat_cmd == NULL) {
 		fprintf(stderr, "Error: Memory allocation for cat command failed\n");
 		exit(EXIT_FAILURE);
@@ -48,6 +48,7 @@ int main(int argc, char **argv)
 	strcpy(cat_cmd[0], CAT_PATH);
 	for (int i = 1; i < argc; i++)
 		strcpy(cat_cmd[i], argv[i]);
+	cat_cmd[argc] = NULL;
 
 
 	/* open pipes to cat */
