@@ -69,15 +69,16 @@ int main(int argc, char **argv)
 
 		// child
 		case 0:
-			// close unused ends of pipes
-			close(cat[CAT_STDIN_FD][PIPE_W]);
-			close(cat[CAT_STDOUT_FD][PIPE_R]);
-			close(cat[CAT_STDERR_FD][PIPE_R]);
-
 			// redirect stdin/stdout/sdterr to cat pipes
 			dup2(cat[CAT_STDIN_FD][PIPE_R], STDIN_FILENO);
 			dup2(cat[CAT_STDOUT_FD][PIPE_W], STDOUT_FILENO);
 			dup2(cat[CAT_STDERR_FD][PIPE_W], STDERR_FILENO);
+
+			// close unused ends of pipes
+			for (int i = 0; i < NUM_CAT_PIPES; i++) {
+				close(cat[i][0]);
+				close(cat[i][1]);
+			}
 
 			execvp(cat_cmd[0], cat_cmd);
 
