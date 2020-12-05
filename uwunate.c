@@ -16,4 +16,32 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <stdlib.h>
+#include <string.h>
+
 #include "uwunate.h"
+
+
+// create a new uwus_t node, on failure return NULL
+uwus_t *new_uwu(char *org, char *uwu)
+{
+	uwus_t *new = malloc(sizeof(uwus_t));
+	if (new == NULL) return NULL;
+
+	new->org = strdup(org);
+	new->uwu = strdup(uwu);
+	new->n   = NULL;
+
+	if (new->org == NULL) {
+		free(new);
+		return NULL;
+	}
+
+	if (new->uwu == NULL) {
+		free(new->org);
+		free(new);
+		return NULL;
+	}
+
+	return new;
+}
