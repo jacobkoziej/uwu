@@ -34,9 +34,10 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	cat_cmd[0] = malloc(sizeof(char) * strlen(CAT_PATH) + 1);
+	cat_cmd[0] = strdup(CAT_PATH);
 	for (int i = 1; i < argc; i++)
-		cat_cmd[i] = malloc(sizeof(char) * strlen(argv[i]) + 1);
+		cat_cmd[i] = strdup(argv[i]);
+	cat_cmd[argc] = NULL;
 
 	for (int i = 0; i < argc; i++) {
 		if (cat_cmd[i] == NULL) {
@@ -44,11 +45,6 @@ int main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-
-	strcpy(cat_cmd[0], CAT_PATH);
-	for (int i = 1; i < argc; i++)
-		strcpy(cat_cmd[i], argv[i]);
-	cat_cmd[argc] = NULL;
 
 
 	/* open pipes to cat */
