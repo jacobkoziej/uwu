@@ -37,8 +37,8 @@ uwus_t *new_uwu(char *org, char *uwu)
 	return new;
 
 error:
-	if (new->uwu != NULL) free(new->uwu);
-	if (new->org != NULL) free(new->org);
+	free(new->uwu);
+	free(new->org);
 	free(new);
 
 	return NULL;
