@@ -28,6 +28,7 @@ typedef struct uwus_t {
 
 
 /* prototype */
+void del_uwu(uwus_t*);
 uwus_t *new_uwu(char*, char*);
 
 
