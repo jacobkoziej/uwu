@@ -24,6 +24,6 @@ uwu: *.o
 	$(CC) $(CFLAGS) -c $^
 
 clean:
-	@rm -vf uwu
+	@rm -vf uwu *.o
 
 .PHONY: clean
