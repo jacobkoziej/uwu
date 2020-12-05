@@ -31,4 +31,4 @@
 #define PIPE_W 1
 
 
-#endif  // UWU_H
+#endif  /* UWU_H */
