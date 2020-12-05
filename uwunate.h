@@ -27,4 +27,8 @@ typedef struct uwus_t {
 } uwus_t;
 
 
+/* prototype */
+uwus_t *new_uwu(char*, char*);
+
+
 #endif  /* UWUNATE_H */
