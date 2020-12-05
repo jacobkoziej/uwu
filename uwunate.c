@@ -22,7 +22,7 @@
 #include "uwunate.h"
 
 
-// delete an uwus_t node
+/* delete an uwus_t node */
 void del_uwu(uwus_t *del)
 {
 	free(del->uwu);
@@ -30,7 +30,7 @@ void del_uwu(uwus_t *del)
 	free(del);
 }
 
-// create a new uwus_t node, on failure return NULL
+/* create a new uwus_t node, on failure return NULL */
 uwus_t *new_uwu(char *org, char *uwu)
 {
 	uwus_t *new = malloc(sizeof(uwus_t));
