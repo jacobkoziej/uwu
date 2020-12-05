@@ -19,5 +19,12 @@
 #ifndef UWUNATE_H
 #define UWUNATE_H
 
+// node for uwu strings
+typedef struct uwus_t {
+	char *org;
+	char *uwu;
+	struct uwus_t *n;
+} uwus_t;
+
 
 #endif  /* UWUNATE_H */
