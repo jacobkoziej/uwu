@@ -17,8 +17,11 @@
 CC = gcc
 CFLAGS = -g -Wall
 
-uwu: uwu.c
-	$(CC) $(CFLAGS) -o uwu uwu.c
+uwu: *.o
+	$(CC) $(CFLAGS) $^ -o uwu
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
 
 clean:
 	@rm -vf uwu
