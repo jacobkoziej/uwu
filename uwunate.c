@@ -40,14 +40,10 @@ uwus_t *new_uwu(char *org, char *uwu)
 	new->uwu = strdup(uwu);
 	new->n   = NULL;
 
-	if (new->org == NULL || new->uwu == NULL) goto error;
+	if (new->org == NULL || new->uwu == NULL) {
+		del_uwu(new);
+		return NULL;
+	}
 
 	return new;
-
-error:
-	free(new->uwu);
-	free(new->org);
-	free(new);
-
-	return NULL;
 }
