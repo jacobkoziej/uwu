@@ -32,16 +32,14 @@ uwus_t *new_uwu(char *org, char *uwu)
 	new->uwu = strdup(uwu);
 	new->n   = NULL;
 
-	if (new->org == NULL) {
-		free(new);
-		return NULL;
-	}
-
-	if (new->uwu == NULL) {
-		free(new->org);
-		free(new);
-		return NULL;
-	}
+	if (new->org == NULL || new->uwu == NULL) goto error;
 
 	return new;
+
+error:
+	if (new->uwu != NULL) free(new->uwu);
+	if (new->org != NULL) free(new->org);
+	free(new);
+
+	return NULL;
 }
