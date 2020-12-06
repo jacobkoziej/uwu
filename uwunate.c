@@ -21,6 +21,7 @@
 
 #include "uwunate.h"
 
+
 /* return number of uwus_t nodes from entry */
 int cnt_uwus(uwus_t *head)
 {
