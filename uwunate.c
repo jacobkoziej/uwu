@@ -42,6 +42,51 @@ void del_uwu(uwus_t *del)
 	free(del);
 }
 
+/* generate a NULL terminated array from uwus_t nodes, on failure return NULL */
+char ***gen_uwus_arr(uwus_t *head)
+{
+	uwus_t *tracer = head;
+	int cnt = cnt_uwus(head);
+
+	char ***arr = malloc(sizeof(char**) * 2);
+	if (arr == NULL) return NULL;
+
+	// make space for all elements + NULL terminator
+	for (int i = 0; i < 2; i++)
+		arr[i] = malloc(sizeof(char*) * cnt + 1);
+
+	for (int i = 0; i < 2; i++)
+		if (arr[i] == NULL) goto error;
+
+	for (int i = 0; tracer; i++) {
+		arr[0][i] = strdup(tracer->org);
+		arr[1][i] = strdup(tracer->uwu);
+
+		if(arr[0][i] == NULL || arr[1][i] == NULL) goto error;
+
+		tracer = tracer->n;
+	}
+
+	arr[0][cnt] = NULL;
+	arr[1][cnt] = NULL;
+
+	return arr;
+
+error:
+	// only free up to what was allocated
+	for (int i = 0; head != tracer; i++) {
+		free(arr[0][i]);
+		free(arr[1][i]);
+	}
+
+	for (int i = 0; i < 2; i++)
+		free(arr[i]);
+
+	free(arr);
+
+	return NULL;
+}
+
 /* insert an uwus_t node in the correct alphabetical position */
 void insrt_uwu(uwus_t **head, uwus_t *new)
 {
