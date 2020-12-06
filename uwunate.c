@@ -42,6 +42,20 @@ void del_uwu(uwus_t *del)
 	free(del);
 }
 
+/* delete an uwus array */
+void del_uwus_arr(char ***arr)
+{
+	for (int i = 0; arr[0][i]; i++) {
+		free(arr[0][i]);
+		free(arr[1][i]);
+	}
+
+	for (int i = 0; i < 2; i++)
+		free(arr[i]);
+
+	free(arr);
+}
+
 /* generate a NULL terminated array from uwus_t nodes, on failure return NULL */
 char ***gen_uwus_arr(uwus_t *head)
 {

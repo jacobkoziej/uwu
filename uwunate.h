@@ -30,6 +30,7 @@ typedef struct uwus_t {
 /* prototype */
 int cnt_uwus(uwus_t*);
 void del_uwu(uwus_t*);
+void del_uwus_arr(char***);
 char ***gen_uwus_arr(uwus_t*);
 void insrt_uwu(uwus_t**, uwus_t*);
 uwus_t *new_uwu(char*, char*);
