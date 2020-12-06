@@ -21,6 +21,18 @@
 
 #include "uwunate.h"
 
+/* return number of uwus_t nodes from entry */
+int cnt_uwus(uwus_t *head)
+{
+	int cnt = 0;
+
+	while (head) {
+		++cnt;
+		head = head->n;
+	}
+
+	return cnt;
+}
 
 /* delete an uwus_t node */
 void del_uwu(uwus_t *del)
