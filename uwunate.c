@@ -30,6 +30,18 @@ void del_uwu(uwus_t *del)
 	free(del);
 }
 
+/* insert an uwus_t node in the correct alphabetical position */
+void insrt_uwu(uwus_t **head, uwus_t *new)
+{
+	uwus_t **tracer = head;
+
+	while((*tracer) && strcmp((*tracer)->org, new->org) < 1)
+		tracer = &(*tracer)->n;
+
+	new->n = *tracer;
+	*tracer = new;
+}
+
 /* create a new uwus_t node, on failure return NULL */
 uwus_t *new_uwu(char *org, char *uwu)
 {
