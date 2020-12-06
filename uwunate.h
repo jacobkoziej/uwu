@@ -31,6 +31,7 @@ typedef struct uwus_t {
 void del_uwu(uwus_t*);
 void insrt_uwu(uwus_t**, uwus_t*);
 uwus_t *new_uwu(char*, char*);
+void purge_uwus(uwus_t**);
 
 
 #endif  /* UWUNATE_H */

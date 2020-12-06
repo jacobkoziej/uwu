@@ -59,3 +59,13 @@ uwus_t *new_uwu(char *org, char *uwu)
 
 	return new;
 }
+
+/* purge all uwus_t nodes */
+void purge_uwus(uwus_t **head)
+{
+	while (*head) {
+		uwus_t *curr = *head;
+		*head = (*head)->n;
+		del_uwu(curr);
+	}
+}
