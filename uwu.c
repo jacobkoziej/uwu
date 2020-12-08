@@ -30,25 +30,7 @@ int main(int argc, char **argv)
 {
 	load_args(argc, argv);
 
-
-	/* obtain cat command */
-	char **cat_cmd = malloc(sizeof(char*) * argc + 1);
-	if (cat_cmd == NULL) {
-		fprintf(stderr, "Error: Memory allocation for cat command failed\n");
-		exit(EXIT_FAILURE);
-	}
-
-	cat_cmd[0] = strdup(CAT_PATH);
-	for (int i = 1; i < argc; i++)
-		cat_cmd[i] = strdup(argv[i]);
-	cat_cmd[argc] = NULL;
-
-	for (int i = 0; i < argc; i++) {
-		if (cat_cmd[i] == NULL) {
-			fprintf(stderr, "Error: Memory allocation for cat arguments failed\n");
-			exit(EXIT_FAILURE);
-		}
-	}
+	char **cat_cmd = gen_cat_cmd(argc, CAT_PATH, argv);
 
 
 	/* open pipes to cat */
