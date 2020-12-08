@@ -23,10 +23,14 @@
 #include <unistd.h>
 
 #include "uwu.h"
+#include "uwuconf.h"
 
 
 int main(int argc, char **argv)
 {
+	load_args(argc, argv);
+
+
 	/* obtain cat command */
 	char **cat_cmd = malloc(sizeof(char*) * argc + 1);
 	if (cat_cmd == NULL) {
