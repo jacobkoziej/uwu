@@ -17,6 +17,10 @@
 CC = gcc
 CFLAGS = -g -Wall
 
+ifdef DEBUG
+	CFLAGS += -DDEBUG
+endif
+
 uwu: *.o
 	$(CC) $(CFLAGS) $^ -o uwu
 
