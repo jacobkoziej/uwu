@@ -16,4 +16,29 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <getopt.h>
+#include <stdlib.h>
+
 #include "uwuconf.h"
+
+
+/* load arguments */
+void load_args(int argc, char **argv)
+{
+	struct option long_options[] = {
+		{"help", no_argument, NULL, 'h'},
+		{0, 0, 0, 0}
+	};
+
+	int opt = 0;
+
+	while ((opt = getopt_long(argc, argv, PROG_ARGS,
+		long_options, NULL)) != -1) {
+
+		switch (opt) {
+			// help
+			case 'h':
+				exit(EXIT_SUCCESS);
+		}
+	}
+}

@@ -19,5 +19,10 @@
 #ifndef UWUCONF_H
 #define UWUCONF_H
 
+#define PROG_ARGS "behnstuvAET"
+
+/* prototype */
+void load_args(int, char**);
+
 
 #endif  /* UWUCONF_H */
