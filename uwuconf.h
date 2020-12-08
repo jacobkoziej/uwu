@@ -24,6 +24,7 @@
 #define PROG_ARGS "behnstuvAET"
 
 /* prototype */
+char **gen_cat_cmd(int, char*, char**);
 void load_args(int, char**);
 
 

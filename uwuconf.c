@@ -17,10 +17,36 @@
  */
 
 #include <getopt.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "uwuconf.h"
 
+
+/* generate cat command to run */
+char **gen_cat_cmd(int argc, char *cat_path, char **argv)
+{
+	char **cat_cmd = malloc(sizeof(char*) * argc + 1);
+	if (cat_cmd == NULL) {
+		fprintf(stderr, "Error: Memory allocation for cat command failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	cat_cmd[0] = strdup(CAT_PATH);
+	for (int i = 1; i < argc; i++)
+		cat_cmd[i] = strdup(argv[i]);
+	cat_cmd[argc] = NULL;
+
+	for (int i = 0; i < argc; i++) {
+		if (cat_cmd[i] == NULL) {
+			fprintf(stderr, "Error: Memory allocation for cat arguments failed\n");
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	return cat_cmd;
+}
 
 /* load arguments */
 void load_args(int argc, char **argv)
