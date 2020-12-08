@@ -19,8 +19,6 @@
 #ifndef UWU_H
 #define UWU_H
 
-#define CAT_PATH "cat"
-
 #define NUM_CAT_PIPES 3
 
 #define CAT_STDIN_FD  0

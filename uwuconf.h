@@ -19,6 +19,8 @@
 #ifndef UWUCONF_H
 #define UWUCONF_H
 
+#define CAT_PATH "cat"
+
 #define PROG_ARGS "behnstuvAET"
 
 /* prototype */
