@@ -32,7 +32,7 @@ struct config {
 
 /* prototype */
 char **gen_cat_cmd(int, char*, char**);
-void load_args(int, char**);
+void load_args(int, char**, struct config*);
 
 
 #endif  /* UWUCONF_H */

@@ -49,7 +49,7 @@ char **gen_cat_cmd(int argc, char *cat_path, char **argv)
 }
 
 /* load arguments */
-void load_args(int argc, char **argv)
+void load_args(int argc, char **argv, struct config *conf)
 {
 	struct option long_options[] = {
 		{"help", no_argument, NULL, 'h'},
