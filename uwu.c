@@ -28,7 +28,12 @@
 
 int main(int argc, char **argv)
 {
-	load_args(argc, argv);
+	struct config conf = {
+		0,    // bufsiz
+		NULL  // config path
+	};
+
+	load_args(argc, argv, &conf);
 
 	char **cat_cmd = gen_cat_cmd(argc, CAT_PATH, argv);
 
