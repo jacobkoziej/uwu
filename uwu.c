@@ -29,8 +29,8 @@
 int main(int argc, char **argv)
 {
 	struct config conf = {
-		0,    // bufsiz
-		NULL  // config path
+		BUFSIZ,  // bufsiz
+		NULL     // config path
 	};
 
 	load_args(argc, argv, &conf);
