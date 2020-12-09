@@ -27,6 +27,7 @@
 // runtime configuration
 struct config {
 	int bufsiz;
+	char *file;
 };
 
 /* prototype */
