@@ -21,7 +21,7 @@
 
 #define CAT_PATH "cat"
 
-#define PROG_ARGS "behnstuvAB:ET"
+#define PROG_ARGS "behinstuvAB:ET"
 
 
 // runtime configuration

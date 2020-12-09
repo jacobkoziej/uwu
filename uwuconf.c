@@ -53,6 +53,7 @@ void load_args(int argc, char **argv, struct config *conf)
 {
 	struct option long_options[] = {
 		{       "help",       no_argument, NULL, 'h'},
+		{    "version",       no_argument, NULL, 'i'},
 		{"buffer-size", required_argument, NULL, 'B'},
 		{0, 0, 0, 0}
 	};
@@ -66,6 +67,10 @@ void load_args(int argc, char **argv, struct config *conf)
 		switch (opt) {
 			// help
 			case 'h':
+				exit(EXIT_SUCCESS);
+
+			// version info
+			case 'i':
 				exit(EXIT_SUCCESS);
 
 			// buffer size
