@@ -52,8 +52,8 @@ char **gen_cat_cmd(int argc, char *cat_path, char **argv)
 void load_args(int argc, char **argv, struct config *conf)
 {
 	struct option long_options[] = {
-		{"buffer-size", required_argument, NULL, 'B'},
 		{       "help",       no_argument, NULL, 'h'},
+		{"buffer-size", required_argument, NULL, 'B'},
 		{0, 0, 0, 0}
 	};
 
