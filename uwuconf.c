@@ -52,11 +52,13 @@ char **gen_cat_cmd(int argc, char *cat_path, char **argv)
 void load_args(int argc, char **argv, struct config *conf)
 {
 	struct option long_options[] = {
-		{"help", no_argument, NULL, 'h'},
+		{"buffer-size", required_argument, NULL, 'B'},
+		{       "help",       no_argument, NULL, 'h'},
 		{0, 0, 0, 0}
 	};
 
 	int opt = 0;
+	int siz = -1;
 
 	while ((opt = getopt_long(argc, argv, PROG_ARGS,
 		long_options, NULL)) != -1) {
@@ -65,6 +67,19 @@ void load_args(int argc, char **argv, struct config *conf)
 			// help
 			case 'h':
 				exit(EXIT_SUCCESS);
+
+			// buffer size
+			case 'B':
+				// only set buffer size if not unbuffered
+				if (siz) siz = atoi(optarg);
+
+				if (0 > siz) {
+					fprintf(stderr, "Invalid buffer size: %d\n", siz);
+					exit (EXIT_FAILURE);
+				}
+
+				conf->bufsiz = siz;
+				break;
 		}
 	}
 }
