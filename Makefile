@@ -14,20 +14,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+PROGRAM_NAME = uwu
+
 CC = gcc
 CFLAGS = -g -Wall
+
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 
 ifdef DEBUG
 	CFLAGS += -DDEBUG
 endif
 
-uwu: *.o
-	$(CC) $(CFLAGS) $^ -o uwu
+uwu: $(OBJ_DIR)/*.o
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/$(PROGRAM_NAME)
 
-%.o: %.c
+obj/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $^
+	@mkdir -p $(OBJ_DIR)
+	@mv *.o $(OBJ_DIR)/
 
 clean:
-	@rm -vf uwu *.o
+	@rm -vrf $(BIN_DIR) $(OBJ_DIR)
 
 .PHONY: clean
