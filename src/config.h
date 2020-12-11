@@ -1,5 +1,5 @@
 /*
- * uwuconf.h -- common header for uwuconf.c
+ * config.h -- common header for config.h
  * Copyright (C) 2020  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef UWUCONF_H
-#define UWUCONF_H
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #define CAT_PATH "cat"
 
@@ -35,4 +35,4 @@ char **gen_cat_cmd(int, char*, char**);
 void load_args(int, char**, struct config*);
 
 
-#endif  /* UWUCONF_H */
+#endif  /* CONFIG_H */

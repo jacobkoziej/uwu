@@ -23,7 +23,7 @@
 #include <unistd.h>
 
 #include "uwu.h"
-#include "uwuconf.h"
+#include "config.h"
 
 
 int main(int argc, char **argv)

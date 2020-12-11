@@ -1,5 +1,5 @@
 /*
- * uwuconf.c -- uwu config parsing
+ * config.c -- configuration of the uwu program
  * Copyright (C) 2020  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "uwuconf.h"
+#include "config.h"
 
 
 /* generate cat command to run */
