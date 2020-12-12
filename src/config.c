@@ -25,6 +25,42 @@
 #include "error.h"
 
 
+/* append cat arguments, return new argument count or -1 on failure */
+static int add_cat_arg(char ***cat_cmd, char *arg)
+{
+	// check if input is NULL
+	if (!cat_cmd) return -1;
+
+	// allocate memory if *cat_cmd is NULL
+	if (!*cat_cmd) {
+		*cat_cmd = malloc(sizeof(char**));
+		if (!*cat_cmd) return -1;
+	}
+
+	char **temp = *cat_cmd;
+
+
+	// get size of input array
+	int cnt = 0;
+	while (temp[cnt])
+		++cnt;
+	++cnt;
+
+	temp = reallocarray(temp, sizeof(char**), cnt + 1);
+	if (!temp) return -1;
+
+	// set previous end to arg
+	temp[cnt - 1] = strdup(arg);
+	if(!temp[cnt - 1]) return -1;
+
+	// set new end to NULL
+	temp[cnt] = NULL;
+	*cat_cmd = temp;
+
+
+	return cnt + 1;
+}
+
 /* generate cat command to run */
 char **gen_cat_cmd(int argc, char *cat_path, char **argv)
 {
