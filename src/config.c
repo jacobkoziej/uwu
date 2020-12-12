@@ -95,6 +95,16 @@ char **gen_cat_cmd(int argc, char *cat_path, char **argv)
 void load_args(int argc, char **argv, struct config *conf)
 {
 	struct option long_options[] = {
+		/* cat-specific */
+		{"number-nonblank",  no_argument, NULL, 'b'},
+		{"number",           no_argument, NULL, 'n'},
+		{"squeeze-blank",    no_argument, NULL, 's'},
+		{"show-nonprinting", no_argument, NULL, 'v'},
+		{"show-ends",        no_argument, NULL, 'E'},
+		{"show-tabs",        no_argument, NULL, 'T'},
+		{"show-all",         no_argument, NULL, 'A'},
+		/* cat-specific */
+
 		{"config-file", required_argument, NULL, 'c'},
 		{       "help",       no_argument, NULL, 'h'},
 		{    "version",       no_argument, NULL, 'i'},
