@@ -1,5 +1,5 @@
 /*
- * uwuerr.c -- uwu error handling
+ * error.c -- error handling
  * Copyright (C) 2020  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,4 +16,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "uwuerr.h"
+#include "error.h"

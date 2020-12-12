@@ -1,5 +1,5 @@
 /*
- * uwuerr.h -- common header for uwuerr.c
+ * error.h -- common header for error.c
  * Copyright (C) 2020  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef UWUERR_H
-#define UWUERR_H
+#ifndef ERROR_H
+#define ERROR_H
 
 
-#endif  /* UWUERR_H */
+#endif  /* ERROR_H */
