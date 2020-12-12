@@ -84,6 +84,10 @@ void load_args(int argc, char **argv, struct config *conf)
 
 				conf->bufsiz = siz;
 				break;
+
+			// exit on invalid option
+			case '?':
+				exit(EXIT_FAILURE);
 		}
 	}
 }
