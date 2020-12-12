@@ -51,7 +51,20 @@ static int add_cat_arg(char ***cat_cmd, char *arg)
 
 	// set previous end to arg
 	temp[cnt - 1] = strdup(arg);
-	if(!temp[cnt - 1]) return -1;
+
+	// manage failures
+	if(!temp[cnt - 1]) {
+		char **failed = temp;
+
+		do {
+			temp = failed;
+			temp = reallocarray(temp, sizeof(char**), cnt);
+		} while (!temp);
+
+		*cat_cmd = temp;
+
+		return -1;
+	}
 
 	// set new end to NULL
 	temp[cnt] = NULL;
