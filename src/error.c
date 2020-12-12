@@ -16,4 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "error.h"
+
+
+/* print fatal error and exit */
+void die(char *msg)
+{
+	fprintf(stderr, "[FATAL]: %s\n", msg);
+	exit(EXIT_FAILURE);
+}

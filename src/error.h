@@ -19,5 +19,8 @@
 #ifndef ERROR_H
 #define ERROR_H
 
+/* prototype */
+void die(char*);
+
 
 #endif  /* ERROR_H */
