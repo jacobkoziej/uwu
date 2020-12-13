@@ -112,8 +112,11 @@ void load_args(int argc, char **argv, struct config *conf)
 		{0, 0, 0, 0}
 	};
 
+	int cnt = 0;
 	int opt = 0;
 	int siz = -1;
+
+	cnt = add_cat_arg(&conf->cat_cmd, CAT_PATH);
 
 	while ((opt = getopt_long(argc, argv, PROG_ARGS,
 		long_options, NULL)) != -1) {
@@ -147,6 +150,20 @@ void load_args(int argc, char **argv, struct config *conf)
 			// exit on invalid option
 			case '?':
 				exit(EXIT_FAILURE);
+
+			// get cat arguments (flags)
+			default:
+				cnt = add_cat_arg(&conf->cat_cmd,
+					argv[optind - 1]);
+
+				if (cnt == -1)
+					die("Failed to generate cat arguments");
+
+				break;
 		}
 	}
+
+	// get remaining cat arguments (files)
+	while (optind < argc)
+		cnt = add_cat_arg(&conf->cat_cmd, argv[optind++]);
 }
