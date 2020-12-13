@@ -28,6 +28,7 @@
 struct config {
 	int bufsiz;
 	char *file;
+	char **cat_cmd;
 };
 
 /* prototype */
