@@ -28,6 +28,7 @@
 struct config {
 	int bufsiz;
 	char *file;
+	char *uwu_list_path;
 	char **cat_cmd;
 };
 
