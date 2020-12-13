@@ -26,7 +26,7 @@
 
 
 /* append cat arguments, return new argument count or -1 on failure */
-static int add_cat_arg(char ***cat_cmd, char *arg)
+int add_cat_arg(char ***cat_cmd, char *arg)
 {
 	// check if input is NULL
 	if (!cat_cmd) return -1;

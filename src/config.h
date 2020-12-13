@@ -32,7 +32,7 @@ struct config {
 };
 
 /* prototype */
-static int add_cat_arg(char***, char*);
+int add_cat_arg(char***, char*);
 void load_args(int, char**, struct config*);
 
 
