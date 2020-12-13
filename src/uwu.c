@@ -22,8 +22,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "uwu.h"
 #include "config.h"
+#include "uwu.h"
 
 
 int main(int argc, char **argv)
