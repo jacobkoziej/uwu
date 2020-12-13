@@ -91,6 +91,7 @@ void load_args(int argc, char **argv, struct config *conf)
 		{"config-file", required_argument, NULL, 'c'},
 		{       "help",       no_argument, NULL, 'h'},
 		{    "version",       no_argument, NULL, 'i'},
+		{   "uwu-list", required_argument, NULL, 'l'},
 		{"buffer-size", required_argument, NULL, 'B'},
 		{0, 0, 0, 0}
 	};
@@ -116,6 +117,10 @@ void load_args(int argc, char **argv, struct config *conf)
 			// version info
 			case 'i':
 				exit(EXIT_SUCCESS);
+
+			// uwu list override
+			case 'l':
+				break;
 
 			// buffer size
 			case 'B':
