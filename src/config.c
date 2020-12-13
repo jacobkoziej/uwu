@@ -23,6 +23,7 @@
 
 #include "config.h"
 #include "error.h"
+#include "uwunate.h"
 
 
 /* append cat arguments, return new argument count or -1 on failure */
@@ -154,4 +155,38 @@ void load_args(int argc, char **argv, struct config *conf)
 	// get remaining cat arguments (files)
 	while (optind < argc)
 		cnt = add_cat_arg(&conf->cat_cmd, argv[optind++]);
+}
+
+/* parse uwu substitution list, return total parsed or -1 on failure */
+int parse_uwus(char *path, uwus_t *head)
+{
+	// open uwu list
+	FILE *config = fopen(path, "r");
+	if (!config) return -1;
+
+	// create line buffer
+	size_t line_bufsiz = sizeof(char) * BUFSIZ;
+	char *line_buf = malloc(line_bufsiz);
+	if (!line_buf) return -1;
+
+	// read file line by line
+	while(getline(&line_buf, &line_bufsiz, config) != -1) {
+		char *in[2];
+		in[0] = strtok(line_buf, ",");
+		in[1] = strtok(NULL, ",");
+
+		// ignore NULL arguments
+		if (in[0] && in[1]) {
+			uwus_t *temp = new_uwu(in[0], in[1]);
+			if (!temp) die("Couldn't make an uwus_t node");
+			insrt_uwu(&head, temp);
+		}
+	}
+
+	// cleanup
+	free(line_buf);
+	fclose(config);
+
+
+	return cnt_uwus(head);
 }

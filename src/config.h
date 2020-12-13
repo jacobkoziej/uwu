@@ -19,6 +19,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include "uwunate.h"
+
+
 #define CAT_PATH "cat"
 
 #define PROG_ARGS "bc:ehil:nstuvAB:ET"
@@ -35,6 +38,7 @@ struct config {
 /* prototype */
 int add_cat_arg(char***, char*);
 void load_args(int, char**, struct config*);
+int parse_uwus(char*, uwus_t*);
 
 
 #endif  /* CONFIG_H */
