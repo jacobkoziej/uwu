@@ -74,23 +74,6 @@ static int add_cat_arg(char ***cat_cmd, char *arg)
 	return cnt + 1;
 }
 
-/* generate cat command to run */
-char **gen_cat_cmd(int argc, char *cat_path, char **argv)
-{
-	char **cat_cmd = malloc(sizeof(char*) * argc + 1);
-	if (!cat_cmd) die("Memory allocation for cat command failed");
-
-	cat_cmd[0] = strdup(CAT_PATH);
-	for (int i = 1; i < argc; i++)
-		cat_cmd[i] = strdup(argv[i]);
-	cat_cmd[argc] = NULL;
-
-	for (int i = 0; i < argc; i++)
-		if (!cat_cmd) die("Memory allocation for cat arguments failed");
-
-	return cat_cmd;
-}
-
 /* load arguments */
 void load_args(int argc, char **argv, struct config *conf)
 {
