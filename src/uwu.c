@@ -29,13 +29,12 @@
 int main(int argc, char **argv)
 {
 	struct config conf = {
-		BUFSIZ,  // bufsiz
-		NULL     // config path
+		BUFSIZ,
+		NULL,
+		NULL
 	};
 
 	load_args(argc, argv, &conf);
-
-	char **cat_cmd = gen_cat_cmd(argc, CAT_PATH, argv);
 
 
 	/* open pipes to cat */
@@ -70,7 +69,7 @@ int main(int argc, char **argv)
 				close(cat[i][PIPE_W]);
 			}
 
-			execvp(cat_cmd[0], cat_cmd);
+			execvp(conf.cat_cmd[0], conf.cat_cmd);
 
 			fprintf(stderr, "Error: %s\n", strerror(errno));
 			exit(EXIT_FAILURE);
@@ -84,12 +83,6 @@ int main(int argc, char **argv)
 
 			break;
 	}
-
-
-	/* cleanup */
-	for (int i = 0; i < argc; i++)
-		free(cat_cmd[i]);
-	free(cat_cmd);
 
 
 	exit(EXIT_SUCCESS);
