@@ -158,7 +158,7 @@ void load_args(int argc, char **argv, struct config *conf)
 }
 
 /* parse uwu substitution list, return total parsed or -1 on failure */
-int parse_uwus(char *path, uwus_t *head)
+int parse_uwu_list(char *path, uwus_t *head)
 {
 	// open uwu list
 	FILE *config = fopen(path, "r");

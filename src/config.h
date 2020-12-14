@@ -38,7 +38,7 @@ struct config {
 /* prototype */
 int add_cat_arg(char***, char*);
 void load_args(int, char**, struct config*);
-int parse_uwus(char*, uwus_t*);
+int parse_uwu_list(char*, uwus_t*);
 
 
 #endif  /* CONFIG_H */
