@@ -156,8 +156,10 @@ void load_args(int argc, char **argv, struct config *conf)
 	}
 
 	// get remaining cat arguments (files)
-	while (optind < argc)
+	while (optind < argc) {
 		cnt = add_cat_arg(&conf->cat_cmd, argv[optind++]);
+		if (cnt == -1) die("Failed to generate cat arguments");
+	}
 }
 
 /* parse uwu substitution list, return total parsed or -1 on failure */
