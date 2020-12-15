@@ -97,6 +97,7 @@ void load_args(int argc, char **argv, struct config *conf)
 		{0, 0, 0, 0}
 	};
 
+	uwus_t *ll_uwus = NULL;
 	int cnt = 0;
 	int opt = 0;
 	int siz = -1;
@@ -121,6 +122,8 @@ void load_args(int argc, char **argv, struct config *conf)
 
 			// uwu list override
 			case 'l':
+				if (parse_uwu_list(optarg, ll_uwus) == -1)
+					die("Couldn't parse uwu substitution list");
 				break;
 
 			// buffer size
