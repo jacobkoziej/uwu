@@ -32,7 +32,8 @@ int main(int argc, char **argv)
 		BUFSIZ,
 		NULL,
 		NULL,
-		NULL
+		NULL,
+		-1
 	};
 
 	load_args(argc, argv, &conf);
