@@ -122,7 +122,7 @@ void load_args(int argc, char **argv, struct config *conf)
 
 			// uwu list override
 			case 'l':
-				if (parse_uwu_list(optarg, ll_uwus) == -1)
+				if (parse_uwu_list(optarg, &ll_uwus) == -1)
 					die("Couldn't parse uwu substitution list");
 				break;
 
@@ -163,7 +163,7 @@ void load_args(int argc, char **argv, struct config *conf)
 }
 
 /* parse uwu substitution list, return total parsed or -1 on failure */
-int parse_uwu_list(char *path, uwus_t *head)
+int parse_uwu_list(char *path, uwus_t **head)
 {
 	// open uwu list
 	FILE *config = fopen(path, "r");
@@ -184,7 +184,7 @@ int parse_uwu_list(char *path, uwus_t *head)
 		if (in[0] && in[1]) {
 			uwus_t *temp = new_uwu(in[0], in[1]);
 			if (!temp) die("Couldn't make an uwus_t node");
-			insrt_uwu(&head, temp);
+			insrt_uwu(head, temp);
 		}
 	}
 
@@ -193,5 +193,5 @@ int parse_uwu_list(char *path, uwus_t *head)
 	fclose(config);
 
 
-	return cnt_uwus(head);
+	return cnt_uwus(*head);
 }
