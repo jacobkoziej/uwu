@@ -15,6 +15,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 PROGRAM_NAME = uwu
+PREFIX ?= /usr/local
+IBIN_DIR = $(PREFIX)/bin
 
 CC = gcc
 CFLAGS = -g -Wall
@@ -36,7 +38,13 @@ obj/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@mv *.o $(OBJ_DIR)/
 
+install: uwu
+	@install -v -m 0755 $(BIN_DIR)/$(PROGRAM_NAME) $(IBIN_DIR)/$(PROGRAM_NAME)
+
+uninstall:
+	@rm -rvf $(IBIN_DIR)/$(PROGRAM_NAME)
+
 clean:
 	@rm -vrf $(BIN_DIR) $(OBJ_DIR)
 
-.PHONY: clean
+.PHONY: install uninstall clean
