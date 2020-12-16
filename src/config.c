@@ -160,6 +160,10 @@ void load_args(int argc, char **argv, struct config *conf)
 		cnt = add_cat_arg(&conf->cat_cmd, argv[optind++]);
 		if (cnt == -1) die("Failed to generate cat arguments");
 	}
+
+	conf->uwu_cnt = cnt_uwus(ll_uwus);
+	conf->uwus    = gen_uwus_arr(ll_uwus);
+	purge_uwus(&ll_uwus);
 }
 
 /* parse uwu substitution list, return total parsed or -1 on failure */
