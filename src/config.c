@@ -182,7 +182,7 @@ int parse_uwu_list(char *path, uwus_t **head)
 	while(getline(&line_buf, &line_bufsiz, config) != -1) {
 		char *in[2];
 		in[0] = strtok(line_buf, ",");
-		in[1] = strtok(NULL, ",");
+		in[1] = strtok(NULL, "\n");
 
 		// ignore NULL arguments
 		if (in[0] && in[1]) {
