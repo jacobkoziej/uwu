@@ -21,6 +21,9 @@
 
 #include "uwunate.h"
 
+#ifndef PREFIX
+#define PREFIX "/usr/local"
+#endif
 
 #define CAT_PATH "cat"
 
