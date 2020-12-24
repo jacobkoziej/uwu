@@ -21,9 +21,17 @@
 
 #include "uwunate.h"
 
+#ifndef PROGRAM_NAME
+#define PROGRAM_NAME "uwu"
+#endif
+
+// Default file paths
 #ifndef PREFIX
 #define PREFIX "/usr/local"
 #endif
+
+#define DEFAULT_UWULIST PREFIX "/share/" PROGRAM_NAME
+
 
 #define CAT_PATH "cat"
 
