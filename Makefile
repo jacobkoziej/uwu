@@ -29,6 +29,10 @@ ifdef DEBUG
 	CFLAGS += -DDEBUG
 endif
 
+ifneq ($(PREFIX), /usr/local)
+	CFLAGS += -D PREFIX=\"$(PREFIX)\"
+endif
+
 uwu: $(OBJ_DIR)/*.o
 	@mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) $^ -o $(BIN_DIR)/$(PROGRAM_NAME)
