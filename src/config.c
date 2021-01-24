@@ -183,7 +183,7 @@ void load_conf(char *conf_path)
 			path = resiz;
 			path = strcat(path, CONFIG_POSTFIX);
 		} else {
-			path = strdup(DEFAULT_CONFIG_PATH);
+			path = strdup(DEFAULT_USER_CONFIG_PATH);
 			if (!path) die("Couldn't generate config path");
 		}
 	}
