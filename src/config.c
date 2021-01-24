@@ -179,7 +179,6 @@ void load_conf(char *conf_path)
 		char *temp = getenv("XDG_CONFIG_HOME");
 
 		if (temp) {
-			printf("test\n");
 			path = strdup(temp);
 			if (!path) die("Couldn't generate config path");
 			char *resiz = malloc(sizeof(char) * (strlen(path) + strlen(CONFIG_POSTFIX) + 1));
