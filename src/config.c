@@ -171,7 +171,11 @@ void load_conf(char *conf_path)
 {
 	char *path = conf_path;
 
-	if (!path) {
+	FILE *conf_file = fopen(path, "r");
+
+	if (!conf_file) {
+		warning("Couldn't open specified config, falling back to system config");
+
 		char *temp = getenv("XDG_CONFIG_HOME");
 
 		if (temp) {
