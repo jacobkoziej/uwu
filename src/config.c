@@ -166,6 +166,29 @@ void load_args(int argc, char **argv, struct config *conf)
 	purge_uwus(&ll_uwus);
 }
 
+/* load default/user settings */
+void load_conf(char *conf_path)
+{
+	char *path = conf_path;
+
+	if (!path) {
+		char *temp = getenv("XDG_CONFIG_HOME");
+
+		if (temp) {
+			printf("test\n");
+			path = strdup(temp);
+			if (!path) die("Couldn't generate config path");
+			char *resiz = malloc(sizeof(char) * (strlen(path) + strlen(CONFIG_POSTFIX) + 1));
+			if (!resiz) die("Couldn't generate config path");
+			path = resiz;
+			path = strcat(path, CONFIG_POSTFIX);
+		} else {
+			path = strdup(DEFAULT_CONFIG_PATH);
+			if (!path) die("Couldn't generate config path");
+		}
+	}
+}
+
 /* parse uwu substitution list, return total parsed or -1 on failure */
 int parse_uwu_list(char *path, uwus_t **head)
 {

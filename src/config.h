@@ -31,6 +31,8 @@
 #endif
 
 #define DEFAULT_UWULIST PREFIX "/share/" PROGRAM_NAME
+#define CONFIG_POSTFIX "/" PROGRAM_NAME "/" PROGRAM_NAME "rc"
+#define DEFAULT_CONFIG_PATH "$HOME/.config" CONFIG_POSTFIX
 
 
 #define CAT_PATH "cat"
@@ -50,6 +52,7 @@ struct config {
 /* prototype */
 int add_cat_arg(char***, char*);
 void load_args(int, char**, struct config*);
+void load_conf(char*);
 int parse_uwu_list(char*, uwus_t**);
 
 
