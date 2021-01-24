@@ -191,6 +191,13 @@ void load_conf(char *conf_path)
 			if (!path) die("Couldn't generate config path");
 		}
 	}
+
+	conf_file = fopen(path, "r");
+	if (!conf_file) conf_file = fopen(DEFAULT_CONFIG_PATH, "r");
+	if (!conf_file) {
+		warning("Couldn't open system config, falling back to program defaults");
+		return;
+	}
 }
 
 /* parse uwu substitution list, return total parsed or -1 on failure */
