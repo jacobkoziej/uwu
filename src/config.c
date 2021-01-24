@@ -186,12 +186,13 @@ void load_conf(char *conf_path)
 			if (!resiz) die("Couldn't generate config path");
 			path = resiz;
 			path = strcat(path, CONFIG_POSTFIX);
+
+			conf_file = fopen(path, "r");
+			free(path);
 		} else {
-			path = strdup(DEFAULT_USER_CONFIG_PATH);
-			if (!path) die("Couldn't generate config path");
+			conf_file = fopen(DEFAULT_USER_CONFIG_PATH, "r");
 		}
 
-		conf_file = fopen(path, "r");
 		if (!conf_file) conf_file = fopen(DEFAULT_CONFIG_PATH, "r");
 		if (!conf_file) {
 			warning("Couldn't open system config, falling back to program defaults");
