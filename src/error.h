@@ -1,6 +1,6 @@
 /*
  * error.h -- common header for error.c
- * Copyright (C) 2020  Jacob Koziej <jacobkoziej@gmail.com>
+ * Copyright (C) 2020-2021  Jacob Koziej <jacobkoziej@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
