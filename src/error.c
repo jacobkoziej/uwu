@@ -28,3 +28,9 @@ void die(char *msg)
 	fprintf(stderr, "[FATAL]: %s\n", msg);
 	exit(EXIT_FAILURE);
 }
+
+/* print a warning message */
+void warning(char *msg)
+{
+	fprintf(stderr, "[WARNING]: %s\n", msg);
+}

@@ -21,6 +21,7 @@
 
 /* prototype */
 void die(char*);
+void warning(char*);
 
 
 #endif  /* ERROR_H */
